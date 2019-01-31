@@ -42,11 +42,14 @@ def get_student():
     github = request.args.get('github')
 
     first, last, github = hackbright.get_student_by_github(github)
+    title_grade_tuple = hackbright.get_grades_by_github(github)
 
     html = render_template("student_info.html", 
                             first=first, 
                             last=last, 
-                            github=github)
+                            github=github,
+                            title_grade_tuple=title_grade_tuple)
+
     
 
     return html
